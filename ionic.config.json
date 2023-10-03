@@ -1,0 +1,7 @@
+{
+  "name": "moio_eventos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
