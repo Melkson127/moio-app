@@ -4,17 +4,21 @@
    <div class="container">
       <img src="assets/logo.svg" alt="Moio">
    </div>
-   <div class="login">
+   <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate class="login">
      <h1>Faça seu login</h1>
-     <ion-input fill="outline" type="text" placeholder="exemplo@email.com" label="email"  label-placement="floating">
-
+     <ion-input fill="outline" type="text" placeholder="exemplo@email.com" label="email"  label-placement="floating"  formControlName="email">
      </ion-input>
+     <div *ngFor="let error of errorMessages.email">
+      <span *ngIf="this.email?.hasError(error.type) && (this.email?.dirty || this.email?.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </span>
+    </div>
      <br>
-     <ion-input fill="outline" type="password" placeholder="senha" label="password"  label-placement="floating">
+     <ion-input fill="outline" type="password" placeholder="senha" label="password"  label-placement="floating"  formControlName="password">
 
      </ion-input>
-     <ion-button>
+     <ion-button (click)="login()">
         acessar conta
      </ion-button>
-   </div>
+   </form>
 </ion-content>

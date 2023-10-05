@@ -10,7 +10,7 @@ div.container{
     color: #fff;
     background: var(--ion-background-second-color);
 }
-div.login{
+.login{
     position:relative;
     display: flex;
     align-items: center;
@@ -30,9 +30,16 @@ div.login{
         
     }
     ion-button{
-        margin-top: 2rem;
+        margin-top: 5rem;
         width: 80%;
         height: 50px;
         --border-radius: 0;
     }
 }
+.error-message{
+    width: 80vw;
+    height: 15px;
+    border-radius: 10px;
+    background: rgb(241, 33, 33);
+    
+  }
