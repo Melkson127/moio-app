@@ -1,13 +1,16 @@
 <ion-modal #modal trigger="open-modal">
   <ng-template>
     <ion-content>
+      <ion-toolbar>
+        <ion-title class="ion-no-padding">Nova Permissão</ion-title>
+        <ion-buttons slot="end">
+             <ion-button  color="light" (click)="modal.dismiss()">
+            <ion-icon name="close-outline" class="ion-align-self-center ion-align-items-center"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+         
+      </ion-toolbar>
       <div class="container">
-        <ion-toolbar>
-          <ion-title class="ion-no-padding">Nova Permissão</ion-title>
-            <ion-button slot="end" color="light" (click)="modal.dismiss()" >
-              <ion-icon name="close-outline" class="ion-align-self-center ion-align-items-center"></ion-icon>
-            </ion-button>
-        </ion-toolbar>
         <p>Registre novas funções na sua conta para facilitar a organização</p>
         <ion-input placeholder="Nome"></ion-input>
         <ion-input placeholder="Email"></ion-input>

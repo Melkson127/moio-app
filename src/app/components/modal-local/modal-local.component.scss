@@ -18,21 +18,12 @@ ion-modal {
         padding: 10px;
         ion-input{
             background: #fff;
-            margin-top: 5px;
+            margin-top: 20px;
             border: #00000033 1px solid;
         }
         ion-button{
             --border-radius: 0;
             margin-top: 10px;
-        }
-        .check{
-            display: flex;
-            align-items: center;
-            padding-bottom: 5px;
-            ion-checkbox{
-                --border-color: var(--ion-color-success);
-                padding-right: 5px;
-            }
         }
     }
   }
@@ -40,5 +31,3 @@ ion-modal {
     background: rgba(209, 213, 219);
     opacity: 1;
   }
-
-   

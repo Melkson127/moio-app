@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from  'rxjs'
-import { tap } from  'rxjs/operators';
+import { BehaviorSubject } from  'rxjs'
 import { Storage } from '@ionic/storage-angular';
 import { API_URL } from 'src/environments/environment';
+import { Router } from '@angular/router';
 interface credentials{
   email:string,
   password:string
 }
 interface AuthResponse{
-  token:string,
+  access_token:string,
   expires_in:string,
-  user: {
-    name:string
+  token_type:string,
+  user:{
+    id:number
+    name:string,
     email:string
+    permissions:number,
   }
 }
 @Injectable({
@@ -21,20 +24,28 @@ interface AuthResponse{
 })
 export class AuthService {
 
-  constructor(  private  httpClient:  HttpClient, private storage: Storage) { 
+  constructor(  private  httpClient:  HttpClient, private storage: Storage, private router:Router) { 
 
   }
   authSubject  =  new  BehaviorSubject(false)
-  // login(credentials:credentials): Observable<AuthResponse>{
-  //   return this.httpClient.post(`${API_URL}/login`, credentials).pipe(
-  //     tap(async (res:  AuthResponse ) => {
-  //       if(res){
-  //         await this.storage.create()
-  //         await this.storage.set("ACCESS_TOKEN", res.token)
-  //         await this.storage.set("EXPIRES_IN", res.expires_in)
-  //         await this.storage.set("USER", res.user)
-  //         this.authSubject.next(true)
-  //       }
-  //     })
-  // }
+  login(credentials:credentials){
+    return this.httpClient.post(`${API_URL}/login`, credentials).subscribe(async (res)=>{
+      await this.store(res as AuthResponse);
+      this.authSubject.next(true)
+      this.router.navigate(['home'])
+    },(err)=>{
+      console.log(err)
+    })
+  }
+  async getUser(){
+    await this.storage.create()
+    return  await this.storage.get('user')
+  }
+  async store(res:AuthResponse){
+      await this.storage.create()
+      await this.storage.set("access_token", res.access_token)
+      await this.storage.set("expires_in", res.expires_in)
+      await this.storage.set("token_type", res.token_type)
+      await this.storage.set("user", res.user)
+  }
 }

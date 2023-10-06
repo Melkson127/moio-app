@@ -1,0 +1,23 @@
+<ion-modal #modal trigger="open-modal">
+  <ng-template>
+    <ion-content>
+      <ion-toolbar>
+        <ion-title class="ion-no-padding">Novo Local</ion-title>
+        <ion-buttons slot="end">
+             <ion-button  color="light" (click)="modal.dismiss()">
+            <ion-icon name="close-outline" class="ion-align-self-center ion-align-items-center"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <div class="container">
+        <p>Cadastre um novo local para seus eventos, este cadastro é direcionado a localização</p>
+        <ion-input fill="outline" type="text" placeholder="Campo dos sonhos" label="Nome"  label-placement="floating"></ion-input>
+        <ion-input fill="outline" type="text" placeholder="00000-000" label="Cep"  label-placement="floating"></ion-input>
+        <ion-input fill="outline" type="text" placeholder="São Paulo" label="Cidade"  label-placement="floating"></ion-input>
+        <ion-input fill="outline" type="text" placeholder="Rua da fortuna" label="Rua"  label-placement="floating"></ion-input>
+        <ion-input fill="outline" type="text" placeholder="16B" label="Numero"  label-placement="floating"></ion-input>
+        <ion-button >Criar Novo Local</ion-button>
+      </div> 
+    </ion-content>
+  </ng-template>
+</ion-modal>

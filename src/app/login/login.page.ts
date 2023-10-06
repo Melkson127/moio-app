@@ -42,7 +42,8 @@ export class LoginPage implements OnInit {
   }
   login(){
     if (this.loginForm.valid) {
-      //this.auth.login(this.loginForm.value)
+      console.log(this.loginForm.value)
+      this.auth.login(this.loginForm.value)
     } else {
       console.log('não foi')
     }

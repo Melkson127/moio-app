@@ -12,15 +12,16 @@
       <ion-searchbar placeholder="Pesquisar">
 
       </ion-searchbar>
-      <h1>Permissões</h1>
+      <h1>{{this.page=='permissions'?'Permissões':'Meus Locais'}}</h1>
       <ion-button id="open-modal">
-        Criar Nova permissão
+        {{this.page=='permissions'?'Criar nova Permissão':'Criar novo Local'}}
       </ion-button>
-      <app-modal></app-modal>
+      <app-modal  *ngIf="this.page=='permissions'"></app-modal>
+      <app-modal-local *ngIf="this.page=='local'"></app-modal-local>
       <div class="tabelaPermissoes">
         <div class="data">
-          <p>Nome</p>
-          <p>Status</p>
+          <p>{{this.page=='permissions'?'Nome':'Nome do Local'}}</p>
+          <p *ngIf="this.page=='permissions'">Status</p>
           <p>Actions</p>
         </div>
         
@@ -30,7 +31,7 @@
               <p>
                 {{user.name}}
               </p>
-              <ion-chip>
+              <ion-chip *ngIf="this.page=='permissions'">
                 {{user.status}}
               </ion-chip>
               <div class="icons">
