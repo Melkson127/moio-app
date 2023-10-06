@@ -1,0 +1,27 @@
+<ion-modal #modal trigger="open-modal">
+  <ng-template>
+    <ion-content>
+      <div class="container">
+        <ion-toolbar>
+          <ion-title class="ion-no-padding">Nova Permissão</ion-title>
+            <ion-button slot="end" color="light" (click)="modal.dismiss()" >
+              <ion-icon name="close-outline" class="ion-align-self-center ion-align-items-center"></ion-icon>
+            </ion-button>
+        </ion-toolbar>
+        <p>Registre novas funções na sua conta para facilitar a organização</p>
+        <ion-input placeholder="Nome"></ion-input>
+        <ion-input placeholder="Email"></ion-input>
+        <h1>Funções</h1>
+        <div class="check">
+          <ion-checkbox></ion-checkbox>
+          <ion-label>Criar novos locais</ion-label>
+        </div>
+        <div class="check">
+          <ion-checkbox></ion-checkbox>
+          <ion-label>Acessar Permissões</ion-label>
+        </div>
+        <ion-button>Enviar Solicitação de Permissão</ion-button>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { HomePageRoutingModule } from './home-routing.module';
-
+import { ModalComponent } from '../components/modal/modal.component';
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -15,6 +15,6 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, ModalComponent]
 })
 export class HomePageModule {}

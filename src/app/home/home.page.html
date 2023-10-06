@@ -13,33 +13,35 @@
 
       </ion-searchbar>
       <h1>Permissões</h1>
-      <ion-button>
+      <ion-button id="open-modal">
         Criar Nova permissão
       </ion-button>
+      <app-modal></app-modal>
       <div class="tabelaPermissoes">
         <div class="data">
           <p>Nome</p>
           <p>Status</p>
           <p>Actions</p>
         </div>
-        <ion-list *ngFor="let user of this.users">
-          <ion-item>
-            <ion-label>
-              {{user.name}}
-            </ion-label>
-            <ion-chip>
-              {{user.status}}
-            </ion-chip>
-            <div class="icons">
-              <ion-icon name="create-outline"></ion-icon>
-              <ion-icon name="trash-outline"></ion-icon>
+        
+        <ion-list *ngFor="let user of this.users" class="ion-no-margin ion-no-padding">
+          <ion-item class="ion-no-padding">
+            <div class="content">
+              <p>
+                {{user.name}}
+              </p>
+              <ion-chip>
+                {{user.status}}
+              </ion-chip>
+              <div class="icons">
+                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="trash-outline"></ion-icon>
+              </div>
             </div>
-            
-
           </ion-item>
         </ion-list>
         <div class="pages">
-          <p>Anterior</p>
+          <p>Anterior</p> 
           <p>Proximo</p>
         </div>
       </div>
