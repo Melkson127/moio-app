@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ExcluirComponent } from '../components/excluir/excluir.component';
 import { IonicModule } from '@ionic/angular';
 import { ModalLocalComponent } from '../components/modal-local/modal-local.component';
 import { HomePageRoutingModule } from './home-routing.module';
@@ -15,6 +15,6 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, ModalComponent, ModalLocalComponent]
+  declarations: [HomePage, ModalComponent, ModalLocalComponent, ExcluirComponent]
 })
 export class HomePageModule {}

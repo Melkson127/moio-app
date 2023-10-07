@@ -1,0 +1,19 @@
+<ion-modal #modal trigger="excluir">
+  <ng-template>
+    <ion-content>
+      <ion-toolbar>
+        <ion-title class="ion-no-padding">Excluir Local</ion-title>
+        <ion-buttons slot="end">
+             <ion-button  color="light" (click)="modal.dismiss()">
+            <ion-icon name="close-outline" class="ion-align-self-center ion-align-items-center"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <div class="container">
+        <p>Você gostaria de excluir [nome do local]? Após a confirmação, o endereço não poderá ser mais utilizado em cadastro.</p>
+        <ion-button>Voltar</ion-button>
+        <ion-button>Excluir</ion-button>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -12,31 +12,31 @@
       <ion-searchbar placeholder="Pesquisar">
 
       </ion-searchbar>
-      <h1>{{this.page=='permissions'?'Permissões':'Meus Locais'}}</h1>
+      <h1>{{this.page==='permissions'?'Permissões':'Meus Locais'}}</h1>
       <ion-button id="open-modal">
-        {{this.page=='permissions'?'Criar nova Permissão':'Criar novo Local'}}
+        {{this.page==='permissions'?'Criar nova Permissão':'Criar novo Local'}}
       </ion-button>
-      <app-modal  *ngIf="this.page=='permissions'"></app-modal>
-      <app-modal-local *ngIf="this.page=='local'"></app-modal-local>
+      <app-modal  *ngIf="this.page==='permissions'"></app-modal>
+      <app-modal-local *ngIf="this.page==='local'"></app-modal-local>
+      <app-excluir></app-excluir>
       <div class="tabelaPermissoes">
         <div class="data">
-          <p>{{this.page=='permissions'?'Nome':'Nome do Local'}}</p>
-          <p *ngIf="this.page=='permissions'">Status</p>
+          <p>{{this.page==='permissions'?'Nome':'Nome do Local'}}</p>
+          <p *ngIf="this.page==='permissions'">Status</p>
           <p>Actions</p>
         </div>
-        
         <ion-list *ngFor="let user of this.users" class="ion-no-margin ion-no-padding">
           <ion-item class="ion-no-padding">
             <div class="content">
               <p>
                 {{user.name}}
               </p>
-              <ion-chip *ngIf="this.page=='permissions'">
+              <ion-chip *ngIf="this.page==='permissions'">
                 {{user.status}}
               </ion-chip>
               <div class="icons">
-                <ion-icon name="create-outline"></ion-icon>
-                <ion-icon name="trash-outline"></ion-icon>
+                <ion-icon  name="create-outline"></ion-icon>
+                <ion-icon id="excluir" name="trash-outline"></ion-icon>
               </div>
             </div>
           </ion-item>

@@ -32,7 +32,7 @@ export class AuthService {
     return this.httpClient.post(`${API_URL}/login`, credentials).subscribe(async (res)=>{
       await this.store(res as AuthResponse);
       this.authSubject.next(true)
-      this.router.navigate(['home'])
+      this.router.navigate(['home/permissions'])
     },(err)=>{
       console.log(err)
     })
@@ -40,6 +40,10 @@ export class AuthService {
   async getUser(){
     await this.storage.create()
     return  await this.storage.get('user')
+  }
+  async getToken(){
+    await this.storage.create()
+    return  await this.storage.get('access_token')
   }
   async store(res:AuthResponse){
       await this.storage.create()
