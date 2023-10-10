@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
@@ -13,31 +13,39 @@ export class LocalService {
 
   constructor(private  httpClient:  HttpClient, private storage: Storage, private router:Router, private auth:AuthService) { }
   token:string = ''
-  newLocal(local:any){
-    this.auth.getToken().then((token)=>{
-      this.token = token
-    })
+  async newLocal(local:any){
+    this.token = await this.auth.getToken()
     return this.httpClient.post(`${API_URL}/local/register`, local,{
       'headers': {
-        'Content_Type': 'json',
+        'Content_Type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       }
-    }).subscribe(async (res)=>{
-      await this.store(res);
+    }).subscribe((res)=>{
+      this.store(res);
       this.router.navigate(['home/local'])
-    },(err)=>{
-      console.log(err)
-    })
+    },err=>this.errorHandling(err))
   }
-  getLocais(){
+  errorHandling(err:HttpErrorResponse){
+    if(err.status == 403){
+      this.router.navigate(['home/permissions'])
+    }else if(err.status == 401){
+      this.router.navigate(['/login'])
+    }
+  }
+  async getLocais(){
+    this.token = await this.auth.getToken()
     return this.httpClient.get(`${API_URL}/local/all`, {
       'headers': {
-        'Content_Type': 'json',
+        'Content_Type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       }
     }).pipe(tap((res)=>{
       this.store(res)
     }))
+  }
+  async getStorageLocais(){
+    await this.storage.create()
+    return await this.storage.get('locais')
   }
   async store(local:any){
     await this.storage.create()

@@ -25,22 +25,41 @@
           <p *ngIf="this.page==='permissions'">Status</p>
           <p>Actions</p>
         </div>
-        <ion-list *ngFor="let user of this.users" class="ion-no-margin ion-no-padding">
-          <ion-item class="ion-no-padding">
-            <div class="content">
-              <p>
-                {{user.name}}
-              </p>
-              <ion-chip *ngIf="this.page==='permissions'">
-                {{user.status}}
-              </ion-chip>
-              <div class="icons">
-                <ion-icon  name="create-outline"></ion-icon>
-                <ion-icon id="excluir" name="trash-outline"></ion-icon>
+        <span *ngIf="this.page==='permissions'">
+          <ion-list *ngFor="let user of this.users" class="ion-no-margin ion-no-padding">
+            <ion-item class="ion-no-padding">
+              <div class="content">
+                <p>
+                  {{user.name}}
+                </p>
+                <ion-chip *ngIf="this.page==='permissions'">
+                  {{user.status}}
+                </ion-chip>
+                <div class="icons">
+                  <ion-icon  name="create-outline"></ion-icon>
+                  <ion-icon id="excluir" name="trash-outline"></ion-icon>
+                </div>
               </div>
-            </div>
-          </ion-item>
-        </ion-list>
+            </ion-item>
+          </ion-list>
+        </span>
+        <span *ngIf="this.page === 'local'">
+          <ion-list *ngFor="let local of this.locais" class="ion-no-margin ion-no-padding" >
+            <ion-item class="ion-no-padding">
+              <div class="content">
+                <p>
+                  {{local.name}}
+                </p>
+  
+                <div class="icons">
+                  <ion-icon  name="create-outline"></ion-icon>
+                  <ion-icon id="excluir" name="trash-outline"></ion-icon>
+                </div>
+              </div>
+            </ion-item>
+          </ion-list>  
+        </span>
+               
         <div class="pages">
           <p>Anterior</p> 
           <p>Proximo</p>
