@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { LocalService } from 'src/app/api/local.service';
 
 @Component({
   selector: 'app-modal-local',
@@ -8,10 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class ModalLocalComponent  implements OnInit {
 
 
-  constructor() { }
-  
+  constructor(private sLocal:LocalService, private modal:ModalController) { }
+  name:string = ''
+  cep:string = ''
+  city:string = ''
+  street:string = ''
+  number:string = ''
   ngOnInit() {}
-  create(){
-
+  newLocal(){
+    this.sLocal.newLocal({
+      name: this.name,
+      cep: this.cep,
+      city: this.city,
+      street: this.street,
+      number:this.number
+    }).then(()=>{
+      this.modal.dismiss()
+    })
   }
 }

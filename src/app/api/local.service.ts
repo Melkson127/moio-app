@@ -14,15 +14,15 @@ export class LocalService {
   constructor(private  httpClient:  HttpClient, private storage: Storage, private router:Router, private auth:AuthService) { }
   token:string = ''
   async newLocal(local:any){
+    console.log(local)
     this.token = await this.auth.getToken()
-    return this.httpClient.post(`${API_URL}/local/register`, local,{
+    return await this.httpClient.post(`${API_URL}/local/register`, local,{
       'headers': {
         'Content_Type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       }
     }).subscribe((res)=>{
       this.store(res);
-      this.router.navigate(['home/local'])
     },err=>this.errorHandling(err))
   }
   errorHandling(err:HttpErrorResponse){
